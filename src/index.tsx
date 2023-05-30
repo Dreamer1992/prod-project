@@ -3,10 +3,10 @@ import { render } from 'react-dom'
 import { BrowserRouter } from 'react-router-dom'
 
 // project imports
-import App from './App'
+import App from './app/App'
 
 // themes
-import ThemeProvider from './styles/theme/ThemeProvider'
+import ThemeProvider from './app/providers/ThemeProvider/ui/ThemeProvider'
 
 render(
   <BrowserRouter>

@@ -5,12 +5,14 @@ import { Route, Routes, Link } from 'react-router-dom'
 import './styles/index.scss'
 
 // pages
-import { AboutPageAsync } from './pages/AboutPage/AboutPage.async'
-import { MainPageAsync } from './pages/MainPage/MainPage.async'
+import { MainPage } from 'pages/MainPage'
+import { AboutPage } from 'pages/AboutPage'
 
 // hooks
-import { useTheme } from './styles/theme/useTheme'
-import { classNames } from './helpers/classNames/classNames'
+import { useTheme } from 'app/providers/ThemeProvider/ui'
+
+// helpers
+import { classNames } from 'helpers/classNames/classNames'
 
 const App = () => {
   const { theme, toggleTheme } = useTheme()
@@ -24,8 +26,8 @@ const App = () => {
 
       <Suspense fallback={<div>Загрузка...</div>}>
         <Routes>
-          <Route path="/about" element={<AboutPageAsync />} />
-          <Route path="/" element={<MainPageAsync />} />
+          <Route path="/about" element={<AboutPage />} />
+          <Route path="/" element={<MainPage />} />
         </Routes>
       </Suspense>
     </div>
