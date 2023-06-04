@@ -4,7 +4,6 @@ const MainPage = () => {
   const { t } = useTranslation('main')
 
   console.log(t('Главная страница'))
-  console.log(t('Главная страница'))
 
   return <div>{t('Главная страница')}</div>
 }

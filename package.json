@@ -16,8 +16,14 @@
   "lint-staged": {
     "*.{js, jsx, ts, tsx}": [
       "npm run lint",
-      "prettier --write"
+      "npm run format",
+      "git add"
     ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run precommit"
+    }
   },
   "keywords": [],
   "author": "",
