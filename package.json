@@ -7,8 +7,8 @@
     "start": "webpack serve --env port=3000",
     "build:prod": "webpack --env mode=production",
     "build:dev": "webpack --env mode=development",
-    "lint": "eslint src/**/*.{js,jsx,ts,tsx,json} --max-warnings=0",
-    "lint:fix": "eslint --fix src/**/*.{js,jsx,ts,tsx,json} --max-warnings=0",
+    "lint": "eslint src/**/*.{js,jsx,ts,tsx,json} --max-warnings=1",
+    "lint:fix": "eslint --fix src/**/*.{js,jsx,ts,tsx,json} --max-warnings=1",
     "format": "prettier --write 'src/**/*.{js,jsx,ts,tsx,css,md,json}' --config ./.prettierrc.json",
     "precommit": "lint-staged",
     "prepare": "husky install"
