@@ -9,7 +9,11 @@ import {
 const defaultTheme =
   (window.localStorage.getItem(LOCAL_STORAGE_THEME_KEY) as Theme) || Theme.LIGHT
 
-const ThemeProvider: React.FC = ({ children }) => {
+interface IProps {
+  children: React.ReactNode
+}
+
+const ThemeProvider = ({ children }: IProps) => {
   const [theme, setTheme] = useState<Theme>(defaultTheme)
 
   const memoizedValue = useMemo(
