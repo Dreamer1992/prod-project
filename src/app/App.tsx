@@ -4,6 +4,9 @@ import { AppRouter } from 'app/providers/router'
 // hooks
 import { useTheme } from 'app/providers/ThemeProvider/ui'
 
+// widgets
+import { Sidebar } from 'widgets/Sidebar'
+
 // helpers
 import { classNames } from 'helpers/classNames/classNames'
 import { Navbar } from 'widgets/Navbar'
@@ -18,7 +21,10 @@ const App = () => {
     <div className={classNames('app', {}, [theme])}>
       <Navbar />
 
-      <AppRouter />
+      <div className="content-page">
+        <Sidebar />
+        <AppRouter />
+      </div>
     </div>
   )
 }
