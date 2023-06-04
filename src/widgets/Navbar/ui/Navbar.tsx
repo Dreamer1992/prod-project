@@ -3,6 +3,7 @@ import { classNames } from 'helpers/classNames/classNames'
 
 // shared
 import { AppLink, AppLinkTheme } from 'shared/ui/AppLink/AppLink'
+import { ThemeSwitcher } from 'shared/ui/ThemeSwitcher'
 
 // styles
 import cls from './Navbar.module.scss'
@@ -14,6 +15,8 @@ interface IProps {
 export const Navbar = ({ className }: IProps) => {
   return (
     <div className={classNames(cls.navbar, {}, [className])}>
+      <ThemeSwitcher />
+
       <div className={classNames(cls.links)}>
         <AppLink theme={AppLinkTheme.SECONDARY} to="/">
           Главная
