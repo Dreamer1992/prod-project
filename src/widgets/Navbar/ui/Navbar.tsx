@@ -1,8 +1,6 @@
-// helpers
-import { classNames } from 'helpers/classNames/classNames'
-
 // shared
 import { AppLink, AppLinkTheme } from 'shared/ui/AppLink/AppLink'
+import { classNames } from 'shared/lib/classNames/classNames'
 
 // styles
 import cls from './Navbar.module.scss'

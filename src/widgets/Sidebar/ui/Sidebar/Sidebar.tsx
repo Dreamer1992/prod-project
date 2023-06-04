@@ -1,10 +1,11 @@
 import { useState } from 'react'
 
-// shared
-import { ThemeSwitcher } from 'shared/ui/ThemeSwitcher'
+// widgets
+import { ThemeSwitcher } from 'widgets/ThemeSwitcher/ui/ThemeSwitcher'
+import { LangSwitcher } from 'widgets/LangSwitcher/LangSwitcher'
 
-// helpers
-import { classNames } from 'helpers/classNames/classNames'
+// shared
+import { classNames } from 'shared/lib/classNames/classNames'
 
 // styles
 import cls from './Sidebar.module.scss'
@@ -30,6 +31,7 @@ export const Sidebar = ({ className }: IProps) => {
 
       <div className={cls.switchers}>
         <ThemeSwitcher />
+        <LangSwitcher />
       </div>
     </div>
   )

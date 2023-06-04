@@ -2,6 +2,7 @@ import { Theme, useTheme } from 'app/providers/ThemeProvider/ui'
 
 // shared
 import { Button, ThemeButton } from 'shared/ui/Button/Button'
+import { classNames } from 'shared/lib/classNames/classNames'
 
 // icons
 import LightIcon from 'shared/assets/icons/theme-light.svg'
@@ -9,9 +10,6 @@ import DarkIcon from 'shared/assets/icons/theme-dark.svg'
 
 // styles
 import cls from './ThemeSwitcher.module.scss'
-
-// helpers
-import { classNames } from 'helpers/classNames/classNames'
 
 interface IProps {
   className?: string

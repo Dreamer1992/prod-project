@@ -1,7 +1,7 @@
 import { ButtonHTMLAttributes } from 'react'
 
-// helpers
-import { classNames } from 'helpers/classNames/classNames'
+// shared
+import { classNames } from 'shared/lib/classNames/classNames'
 
 // styles
 import cls from './Button.module.scss'
