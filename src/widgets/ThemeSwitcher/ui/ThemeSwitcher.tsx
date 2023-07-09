@@ -1,4 +1,4 @@
-import { Theme, useTheme } from 'app/providers/ThemeProvider/ui'
+import { Theme, useTheme } from 'app/providers/ThemeProvider'
 
 // shared
 import { Button, ThemeButton } from 'shared/ui/Button/Button'

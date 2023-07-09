@@ -4,7 +4,7 @@ import { Suspense } from 'react'
 import { AppRouter } from 'app/providers/router'
 
 // hooks
-import { useTheme } from 'app/providers/ThemeProvider/ui'
+import { useTheme } from 'app/providers/ThemeProvider'
 
 // widgets
 import { Sidebar } from 'widgets/Sidebar'
