@@ -14,7 +14,9 @@
     "prepare": "husky install",
     "lint:scss": "npx stylelint \"**/*.scss\"",
     "lint:scss:fix": "npx stylelint \"**/*.scss\" --fix",
-    "unit": "jest --config ./config/jest/jest.config.ts",
+    "test:unit": "jest --config ./config/jest/jest.config.ts",
+    "test:ui": "npx loki test",
+    "test:ui:ok": "npx loki approve",
     "storybook": "start-storybook -p 6006 -c ./config/storybook",
     "build-storybook": "build-storybook -c ./config/storybook"
   },
@@ -33,6 +35,15 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "dependencies": {
+    "i18next": "^21.6.11",
+    "i18next-browser-languagedetector": "^6.1.3",
+    "i18next-http-backend": "^1.3.2",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-i18next": "^11.15.5",
+    "react-router-dom": "^6.2.1"
+  },
   "devDependencies": {
     "@babel/core": "^7.17.5",
     "@babel/preset-env": "^7.16.11",
@@ -75,6 +86,7 @@
     "jest": "^27.5.1",
     "jest-environment-jsdom": "^27.4.0",
     "lint-staged": "^13.2.2",
+    "loki": "^0.32.0",
     "mini-css-extract-plugin": "^2.7.6",
     "prettier": "2.8.8",
     "sass": "^1.62.1",
@@ -91,13 +103,19 @@
     "webpack-cli": "^4.10.0",
     "webpack-dev-server": "^4.7.4"
   },
-  "dependencies": {
-    "i18next": "^21.6.11",
-    "i18next-browser-languagedetector": "^6.1.3",
-    "i18next-http-backend": "^1.3.2",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "react-i18next": "^11.15.5",
-    "react-router-dom": "^6.2.1"
+  "loki": {
+    "configurations": {
+      "chrome.laptop": {
+        "target": "chrome.app",
+        "width": 1366,
+        "height": 768,
+        "deviceScaleFactor": 1,
+        "mobile": false
+      },
+      "chrome.iphone7": {
+        "target": "chrome.app",
+        "preset": "iPhone 7"
+      }
+    }
   }
 }
