@@ -1,7 +1,6 @@
 import { fireEvent, screen } from '@testing-library/react'
 
 // shared
-import { renderWithTranslation } from 'shared/lib/tests/renderWithTranslation/renderWithTranslation'
 import { componentRender } from 'shared/lib/tests/componentRender/componentRender'
 
 // widgets
