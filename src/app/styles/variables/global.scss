@@ -1,5 +1,9 @@
 :root {
   --font-family-main: consolas, 'Times New Roman', 'sans-serif';
+  --font-size-sm: 12px;
+  --font-line-height-sm: 20px;
+  --font-sm: var(--font-size-sm) / var(--font-line-height-sm)
+    var(--font-family-main);
   --font-size-md: 16px;
   --font-line-height-md: 24px;
   --font-md: var(--font-size-md) / var(--font-line-height-md)

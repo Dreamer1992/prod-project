@@ -1,7 +1,7 @@
 import { Theme, useTheme } from 'app/providers/ThemeProvider'
 
 // shared
-import { Button, ThemeButton } from 'shared/ui/Button/Button'
+import { Button, ButtonTheme } from 'shared/ui/Button/Button'
 import { classNames } from 'shared/lib/classNames/classNames'
 
 // icons
@@ -17,7 +17,7 @@ export const ThemeSwitcher = ({ className }: IProps) => {
 
   return (
     <Button
-      theme={ThemeButton.CLEAR}
+      theme={ButtonTheme.CLEAR}
       className={classNames('', {}, [className])}
       onClick={toggleTheme}
     >
