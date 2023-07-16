@@ -12,7 +12,15 @@
   --font-line-height-lg: 32px;
   --font-lg: var(--font-size-lg) / var(--font-line-height-lg)
     var(--font-family-main);
+
+  // Размеры
   --navbar-height: 50px;
   --sidebar-width: 300px;
   --sidebar-width-collapsed: 80px;
+
+  // z - Индексы
+  --modal-z-index: 10;
+
+  // Цвета
+  --overlay-color: rgba(0 0 0 / 60%);
 }

@@ -11,15 +11,13 @@ const defaultTheme =
 
 interface IProps {
   children: React.ReactNode
+  initialTheme?: Theme
 }
 
-const ThemeProvider = ({ children }: IProps) => {
-  const [theme, setTheme] = useState<Theme>(defaultTheme)
+const ThemeProvider = ({ children, initialTheme }: IProps) => {
+  const [theme, setTheme] = useState<Theme>(initialTheme || defaultTheme)
 
-  const memoizedValue = useMemo(
-    () => ({ theme: theme, setTheme: setTheme }),
-    [theme]
-  )
+  const memoizedValue = useMemo(() => ({ theme, setTheme }), [theme])
 
   return (
     <ThemeContext.Provider value={memoizedValue}>

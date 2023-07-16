@@ -13,9 +13,6 @@ import { Navbar } from 'widgets/Navbar'
 // shared
 import { classNames } from 'shared/lib/classNames/classNames'
 
-// styles
-import './styles/index.scss'
-
 const App = () => {
   const { theme } = useTheme()
 

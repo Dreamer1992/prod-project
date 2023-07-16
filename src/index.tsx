@@ -5,11 +5,14 @@ import { BrowserRouter } from 'react-router-dom'
 // project imports
 import App from './app/App'
 
+// shared
+import 'shared/config/i18n/i18n'
+
 // themes
 import { ThemeProvider } from 'app/providers/ThemeProvider'
 
-// shared
-import 'shared/config/i18n/i18n'
+// styles
+import 'app/styles/index.scss'
 
 import { ErrorBoundary } from 'app/providers/ErrorBoundary'
 
