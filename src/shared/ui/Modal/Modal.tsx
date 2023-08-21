@@ -3,8 +3,10 @@ import { ReactNode, useCallback, useEffect, useRef, useState } from 'react'
 // hooks
 import { useTheme } from 'app/providers/ThemeProvider'
 
-// shared
+// libs
 import { classNames } from 'shared/lib/classNames/classNames'
+
+// ui
 import { Portal } from 'shared/ui/Portal/Portal'
 
 // styles
@@ -69,7 +71,9 @@ export const Modal = (props: IProps) => {
 
   return (
     <Portal>
-      <div className={classNames(cls.Modal, mods, [className, theme])}>
+      <div
+        className={classNames(cls.Modal, mods, [className, theme, 'app_modal'])}
+      >
         <div className={cls.overlay} onClick={closeHandler}>
           <div className={cls.content} onClick={onContentClick}>
             {children}
