@@ -25,6 +25,7 @@ interface IProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   theme?: ButtonTheme
   isSquare?: boolean
   size?: ButtonSize
+  disabled?: boolean
 }
 
 export const Button = (props: IProps) => {
@@ -33,6 +34,7 @@ export const Button = (props: IProps) => {
     children,
     theme,
     isSquare,
+    disabled,
     size = ButtonSize.MD,
     ...otherProps
   } = props
@@ -41,12 +43,14 @@ export const Button = (props: IProps) => {
     [cls[theme]]: true,
     [cls.square]: isSquare,
     [cls[size]]: true,
+    [cls.disabled]: disabled,
   }
 
   return (
     <button
       type="button"
       className={classNames(cls.Button, mods, [className])}
+      disabled={disabled}
       {...otherProps}
     >
       {children}

@@ -7,5 +7,10 @@
   "Извините... произошла ошибка": "Sorry... there was an error",
   "Обновить страницу": "Refresh the page",
   "Короткий язык": "En",
-  "Войти": "Sign in"
+  "Войти": "Sign in",
+
+  "loginForm.auth_title": "Authorization",
+  "loginForm.user_not_found": "User not found",
+  "loginForm.enter_name": "Enter name",
+  "loginForm.enter_password": "Enter password"
 }

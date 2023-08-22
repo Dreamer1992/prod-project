@@ -82,3 +82,10 @@ SquareSizeLG.args = {
   isSquare: true,
   size: ButtonSize.LG,
 }
+
+export const Disabled = Template.bind({})
+Disabled.args = {
+  children: 'Disabled',
+  theme: ButtonTheme.OUTLINE,
+  disabled: true,
+}

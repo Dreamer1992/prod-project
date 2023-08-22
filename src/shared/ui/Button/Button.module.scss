@@ -73,3 +73,8 @@
   width: var(--font-line-height-lg);
   height: var(--font-line-height-lg);
 }
+
+.disabled {
+  opacity: 0.5;
+  cursor: default;
+}
