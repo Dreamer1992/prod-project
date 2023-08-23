@@ -1,21 +1,20 @@
-import { configureStore } from '@reduxjs/toolkit'
+import { Action, ThunkAction, configureStore } from '@reduxjs/toolkit'
+import { rootReducer } from './rootReducer'
+import { setupListeners } from '@reduxjs/toolkit/query/react'
 
-// types
-import { IStateSchema } from './StateSchema'
+export const store = configureStore({
+  reducer: rootReducer,
+  devTools: __IS_DEV__,
+  middleware: (gDM) => gDM(),
+})
 
-// reducers
-import { counterReducer } from 'entities/Counter'
-import { userReducer } from 'entities/User'
-import { loginReducer } from 'features/AuthByUsername'
+export type AppDispatch = typeof store.dispatch
+export type RootState = ReturnType<typeof store.getState>
+export type AppThunk<ReturnType = void> = ThunkAction<
+  ReturnType,
+  RootState,
+  unknown,
+  Action<string>
+>
 
-export function createReduxStore(initialState?: IStateSchema) {
-  return configureStore<IStateSchema>({
-    reducer: {
-      counter: counterReducer,
-      user: userReducer,
-      loginForm: loginReducer,
-    },
-    devTools: __IS_DEV__,
-    preloadedState: initialState,
-  })
-}
+setupListeners(store.dispatch)

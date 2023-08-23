@@ -2,10 +2,18 @@
   "Тестовый пример": "Test example",
   "Перевод": "Translate",
   "Язык": "English",
-  "Переключить": "Toogle",
+  "Переключить": "Toggle",
   "Страница не найдена": "Page not found",
   "Извините... произошла ошибка": "Sorry... there was an error",
   "Обновить страницу": "Refresh the page",
   "Короткий язык": "En",
-  "Войти": "Sign in"
+
+  "navbar.login": "Sign in",
+  "navbar.logout": "Logout",
+
+
+  "loginForm.auth_title": "Authorization",
+  "loginForm.user_not_found": "User not found",
+  "loginForm.enter_name": "Enter name",
+  "loginForm.enter_password": "Enter password"
 }

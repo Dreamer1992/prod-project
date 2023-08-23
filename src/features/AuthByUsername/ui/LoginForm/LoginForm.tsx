@@ -1,14 +1,15 @@
 import { useCallback } from 'react'
 
 // hooks
-import { useDispatch, useSelector } from 'react-redux'
 import { useTranslation } from 'react-i18next'
+import { useAppDispatch, useAppSelector } from 'shared/hooks'
 
 // libs
 import { classNames } from 'shared/lib/classNames/classNames'
 
 // ui
 import { Button, ButtonTheme } from 'shared/ui/Button/Button'
+import { Text, TextTheme } from 'shared/ui/Text/Text'
 import Input from 'shared/ui/Input/Input'
 
 // actions
@@ -28,10 +29,10 @@ interface IProps {
 }
 
 export const LoginForm = ({ className }: IProps) => {
-  const dispatch = useDispatch()
-  const { t } = useTranslation()
+  const dispatch = useAppDispatch()
+  const { t } = useTranslation('translation')
 
-  const { username, password } = useSelector(getLoginState)
+  const { username, password, error, isLoading } = useAppSelector(getLoginState)
 
   const onChangeUsername = useCallback((value) => {
     dispatch(loginActions.setUsername(value))
@@ -47,10 +48,19 @@ export const LoginForm = ({ className }: IProps) => {
 
   return (
     <div className={classNames(cls.loginForm, {}, [className])}>
+      <Text title={t('loginForm.auth_title')} />
+
+      {error && (
+        <Text
+          text={t(error, 'Пользователь не найден')}
+          theme={TextTheme.ERROR}
+        />
+      )}
+
       <Input
         type="text"
         className={cls.input}
-        placeholder={t('Введите username')}
+        placeholder={t('loginForm.enter_name')}
         onChange={onChangeUsername}
         value={username}
       />
@@ -58,7 +68,7 @@ export const LoginForm = ({ className }: IProps) => {
       <Input
         type="text"
         className={cls.input}
-        placeholder={t('Введите пароль')}
+        placeholder={t('loginForm.enter_password')}
         onChange={onChangePassword}
         value={password}
       />
@@ -66,6 +76,7 @@ export const LoginForm = ({ className }: IProps) => {
       <Button
         theme={ButtonTheme.OUTLINE}
         className={cls.loginBtn}
+        disabled={isLoading}
         onClick={onLoginClick}
       >
         {t('Войти')}

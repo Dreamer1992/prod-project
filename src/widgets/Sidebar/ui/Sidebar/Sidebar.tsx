@@ -65,7 +65,7 @@ export const Sidebar = ({ className }: IProps) => {
         data-testid="sidebar-toggle"
         onClick={onToggle}
         className={cls.collapseBtn}
-        theme={ButtonTheme.BACKGROUND_INVERTED}
+        theme={ButtonTheme.BACKGROUND}
         size={ButtonSize.LG}
         isSquare
       >

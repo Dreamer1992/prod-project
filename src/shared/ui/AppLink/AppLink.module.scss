@@ -8,6 +8,11 @@
 
 .secondary {
   color: var(--secondary-color);
+
+  &:hover {
+    color: var(--green);
+    background-color: var(--green-hover)
+  }
 }
 
 .red {
