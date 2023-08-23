@@ -14,7 +14,7 @@
     var(--font-family-main);
 
   // Размеры
-  --navbar-height: 50px;
+  --navbar-height: 68px;
   --sidebar-width: 300px;
   --sidebar-width-collapsed: 80px;
 
@@ -23,6 +23,9 @@
 
   // Цвета
   --overlay-color: rgba(0 0 0 / 60%);
-  --red-light: #f44336;
-  --red-dark: #d32f2f;
+  --red-light: #ef5b57;
+  --red-dark: #d9534f;
+
+  --green: #009688;
+  --green-hover: rgba(0, 150, 136, 0.082);
 }
