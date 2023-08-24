@@ -1,9 +1,12 @@
+import { Suspense } from 'react'
+
 // libs
 import { classNames } from 'shared/lib/classNames/classNames'
 
 // ui
 import { Modal } from 'shared/ui/Modal/Modal'
-import { LoginForm } from '../LoginForm/LoginForm'
+import { LoginFormAsync } from '../LoginForm/LoginForm.async'
+import { Loader } from 'shared/ui/Loader/Loader'
 
 interface IProps {
   className?: string
@@ -17,6 +20,8 @@ export const LoginModal = ({ className, isOpen, onClose }: IProps) => (
     isOpen={isOpen}
     onClose={onClose}
   >
-    <LoginForm />
+    <Suspense fallback={<Loader />}>
+      <LoginFormAsync />
+    </Suspense>
   </Modal>
 )

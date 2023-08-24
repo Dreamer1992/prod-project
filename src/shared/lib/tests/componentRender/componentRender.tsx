@@ -1,4 +1,3 @@
-import { ReactNode } from 'react'
 import { MemoryRouter } from 'react-router-dom'
 import { DeepPartial } from '@reduxjs/toolkit'
 import { render } from '@testing-library/react'
@@ -15,7 +14,7 @@ export interface componentRenderOptions {
 }
 
 export function componentRender(
-  component: ReactNode,
+  component: React.ReactNode,
   options: componentRenderOptions = {}
 ) {
   const { route = '/', initialState } = options

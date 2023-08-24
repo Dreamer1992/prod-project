@@ -14,5 +14,6 @@
   "loginForm.auth_title": "Авторизация",
   "loginForm.user_not_found": "Пользователь не найден",
   "loginForm.enter_name": "Введите имя",
-  "loginForm.enter_password": "Введите пароль"
+  "loginForm.enter_password": "Введите пароль",
+  "loginForm.login": "Войти"
 }

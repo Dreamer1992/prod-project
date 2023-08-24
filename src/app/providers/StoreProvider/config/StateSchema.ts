@@ -5,5 +5,9 @@ import { ILoginSchema } from 'features/AuthByUsername'
 export interface IStateSchema {
   counter: ICounterSchema
   user: IUserSchema
-  loginForm: ILoginSchema
+
+  // async reducers
+  loginForm?: ILoginSchema
 }
+
+export type TStateSchemaKey = keyof IStateSchema
