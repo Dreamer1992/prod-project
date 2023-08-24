@@ -13,26 +13,39 @@ import { Text, TextTheme } from 'shared/ui/Text/Text'
 import Input from 'shared/ui/Input/Input'
 
 // actions
-import { loginActions } from '../../model/slice/loginSlice'
+import { loginActions, loginReducer } from '../../model/slice/loginSlice'
 
 // thunks
 import { loginByUsernameThunk } from '../../model/services/loginByUsername/loginByUsername'
 
 // selectors
-import { getLoginState } from '../../model/selectors/getLoginState/getLoginState'
+import { getLoginIsLoading } from '../../model/selectors/getLoginIsLoading/getLoginIsLoading'
+import { getLoginUsername } from '../../model/selectors/getLoginUsername/getLoginUsername'
+import { getLoginPassword } from '../../model/selectors/getLoginPassword/getLoginPassword'
+import { getLoginError } from '../../model/selectors/getLoginError/getLoginError'
 
 // styles
 import cls from './LoginForm.module.scss'
+import DynamicModuleLoader, {
+  TReducerList,
+} from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader'
 
 interface IProps {
   className?: string
 }
 
-export const LoginForm = ({ className }: IProps) => {
+const initialReducers: TReducerList = {
+  loginForm: loginReducer,
+}
+
+const LoginForm = ({ className }: IProps) => {
   const dispatch = useAppDispatch()
   const { t } = useTranslation('translation')
 
-  const { username, password, error, isLoading } = useAppSelector(getLoginState)
+  const username = useAppSelector(getLoginUsername)
+  const password = useAppSelector(getLoginPassword)
+  const isLoading = useAppSelector(getLoginIsLoading)
+  const error = useAppSelector(getLoginError)
 
   const onChangeUsername = useCallback((value) => {
     dispatch(loginActions.setUsername(value))
@@ -47,40 +60,44 @@ export const LoginForm = ({ className }: IProps) => {
   }, [username, password])
 
   return (
-    <div className={classNames(cls.loginForm, {}, [className])}>
-      <Text title={t('loginForm.auth_title')} />
+    <DynamicModuleLoader reducers={initialReducers} removeAfterUnmount>
+      <div className={classNames(cls.loginForm, {}, [className])}>
+        <Text title={t('loginForm.auth_title')} />
 
-      {error && (
-        <Text
-          text={t(error, 'Пользователь не найден')}
-          theme={TextTheme.ERROR}
+        {error && (
+          <Text
+            text={t(error, 'Пользователь не найден')}
+            theme={TextTheme.ERROR}
+          />
+        )}
+
+        <Input
+          type="text"
+          className={cls.input}
+          placeholder={t('loginForm.enter_name')}
+          onChange={onChangeUsername}
+          value={username}
         />
-      )}
 
-      <Input
-        type="text"
-        className={cls.input}
-        placeholder={t('loginForm.enter_name')}
-        onChange={onChangeUsername}
-        value={username}
-      />
+        <Input
+          type="text"
+          className={cls.input}
+          placeholder={t('loginForm.enter_password')}
+          onChange={onChangePassword}
+          value={password}
+        />
 
-      <Input
-        type="text"
-        className={cls.input}
-        placeholder={t('loginForm.enter_password')}
-        onChange={onChangePassword}
-        value={password}
-      />
-
-      <Button
-        theme={ButtonTheme.OUTLINE}
-        className={cls.loginBtn}
-        disabled={isLoading}
-        onClick={onLoginClick}
-      >
-        {t('Войти')}
-      </Button>
-    </div>
+        <Button
+          theme={ButtonTheme.OUTLINE}
+          className={cls.loginBtn}
+          disabled={isLoading}
+          onClick={onLoginClick}
+        >
+          {t('loginForm.login', 'Войти')}
+        </Button>
+      </div>
+    </DynamicModuleLoader>
   )
 }
+
+export default LoginForm
