@@ -5,7 +5,7 @@ import { AppRouter } from 'app/providers/router'
 
 // hooks
 import { useTheme } from 'app/providers/ThemeProvider'
-import { useAppDispatch } from 'shared/hooks'
+import { useAppDispatch } from 'shared/lib/hooks'
 
 // actions
 import { userActions } from 'entities/User'

@@ -6,13 +6,13 @@ import {
 } from '@reduxjs/toolkit'
 
 // types
-import { IStateSchema, TStateSchemaKey } from './StateSchema'
-import { IReducerManager } from './store'
+import { IReducerManager, IStateSchema, TStateSchemaKey } from './StateSchema'
 
 export function createReducerManager(
-  initialReducers: ReducersMapObject<IStateSchema, AnyAction>
+  initialReducers: ReducersMapObject<IStateSchema, AnyAction>,
+  asyncReducers?: ReducersMapObject<IStateSchema>
 ): IReducerManager {
-  const reducers = { ...initialReducers }
+  const reducers = { ...asyncReducers, ...initialReducers }
 
   let combinedReducer = combineReducers(reducers)
 
@@ -34,9 +34,7 @@ export function createReducerManager(
     },
 
     add: (key: TStateSchemaKey, reducer: Reducer) => {
-      if (!key || reducers[key]) {
-        return
-      }
+      if (!key || reducers[key]) return
 
       reducers[key] = reducer
       combinedReducer = combineReducers(reducers)

@@ -2,7 +2,7 @@ import { useCallback } from 'react'
 
 // hooks
 import { useTranslation } from 'react-i18next'
-import { useAppDispatch, useAppSelector } from 'shared/hooks'
+import { useAppDispatch } from 'shared/lib/hooks'
 
 // libs
 import { classNames } from 'shared/lib/classNames/classNames'
@@ -29,6 +29,7 @@ import cls from './LoginForm.module.scss'
 import DynamicModuleLoader, {
   TReducerList,
 } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader'
+import { useSelector } from 'react-redux'
 
 interface IProps {
   className?: string
@@ -42,10 +43,10 @@ const LoginForm = ({ className }: IProps) => {
   const dispatch = useAppDispatch()
   const { t } = useTranslation('translation')
 
-  const username = useAppSelector(getLoginUsername)
-  const password = useAppSelector(getLoginPassword)
-  const isLoading = useAppSelector(getLoginIsLoading)
-  const error = useAppSelector(getLoginError)
+  const username = useSelector(getLoginUsername)
+  const password = useSelector(getLoginPassword)
+  const isLoading = useSelector(getLoginIsLoading)
+  const error = useSelector(getLoginError)
 
   const onChangeUsername = useCallback((value) => {
     dispatch(loginActions.setUsername(value))

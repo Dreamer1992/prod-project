@@ -1,7 +1,8 @@
 // hooks
 import { useCallback, useState } from 'react'
 import { useTranslation } from 'react-i18next'
-import { useAppDispatch, useAppSelector } from 'shared/hooks'
+import { useAppDispatch } from 'shared/lib/hooks'
+import { useSelector } from 'react-redux'
 
 // libs
 import { classNames } from 'shared/lib/classNames/classNames'
@@ -26,7 +27,7 @@ export const Navbar = ({ className }: IProps) => {
   const dispatch = useAppDispatch()
   const { t } = useTranslation(['translation'])
 
-  const authData = useAppSelector(getUserAuthData)
+  const authData = useSelector(getUserAuthData)
 
   const [isAuthModal, setIsAuthModal] = useState(false)
 

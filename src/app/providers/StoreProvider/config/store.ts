@@ -1,51 +1,31 @@
-import {
-  Action,
-  ThunkAction,
-  configureStore,
-  ReducersMapObject,
-  AnyAction,
-  Reducer,
-  CombinedState,
-  EnhancedStore,
-} from '@reduxjs/toolkit'
-import { setupListeners } from '@reduxjs/toolkit/query/react'
+import { configureStore, ReducersMapObject } from '@reduxjs/toolkit'
 
 import { createReducerManager } from './reducerManager'
-import { staticReducers } from './reducers'
-import { IStateSchema, TStateSchemaKey } from './StateSchema'
+import { staticReducers } from './staticReducers'
+import { IStateSchema } from './StateSchema'
 
-const reducerManager = createReducerManager(staticReducers)
+export function createReduxStore(
+  initialState?: IStateSchema,
+  asyncReducers?: ReducersMapObject<IStateSchema>
+) {
+  const rootReducers: ReducersMapObject<IStateSchema> = {
+    ...asyncReducers,
+    ...staticReducers,
+  }
 
-export const store = configureStore({
-  reducer: reducerManager.reduce,
-  devTools: __IS_DEV__,
-  middleware: (gDM) => gDM(),
-})
+  const reducerManager = createReducerManager(rootReducers)
 
-// @ts-ignore
-store.reducerManager = reducerManager
+  const store = configureStore<IStateSchema>({
+    reducer: reducerManager.reduce,
+    devTools: __IS_DEV__,
+    preloadedState: initialState,
+  })
 
-export type AppDispatch = typeof store.dispatch
-export type RootState = ReturnType<typeof store.getState>
-export type AppThunk<ReturnType = void> = ThunkAction<
-  ReturnType,
-  RootState,
-  unknown,
-  Action<string>
->
+  // @ts-ignore
+  store.reducerManager = reducerManager
 
-setupListeners(store.dispatch)
-
-export interface IReducerManager {
-  getReducerMap: () => ReducersMapObject<IStateSchema>
-  reduce: (
-    state: IStateSchema,
-    action: AnyAction
-  ) => CombinedState<IStateSchema>
-  add: (key: TStateSchemaKey, reducer: Reducer) => void
-  remove: (key: TStateSchemaKey) => void
+  return store
 }
 
-export interface IReduxStoreWithManager extends EnhancedStore<IStateSchema> {
-  reducerManager: IReducerManager
-}
+export type AppDispatch = ReturnType<typeof createReduxStore>['dispatch']
+export type RootState = ReturnType<typeof createReduxStore>['getState']
