@@ -1,5 +1,7 @@
 import { ECountry, ECurrency } from 'shared/const/common'
 
+export const PROFILE = 'PROFILE'
+
 export interface IProfile {
   firstName: string
   lastName: string

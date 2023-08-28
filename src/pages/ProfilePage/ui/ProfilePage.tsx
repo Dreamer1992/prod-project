@@ -1,6 +1,14 @@
-import { classNames } from 'shared/lib/classNames/classNames'
+import { useEffect } from 'react'
+
+// hooks
+import { useAppDispatch } from 'shared/lib/hooks/hooks'
 import { useTranslation } from 'react-i18next'
-import { profileReducer } from 'entities/Profile'
+
+// libs
+import { classNames } from 'shared/lib/classNames/classNames'
+
+import { fetchProfileDataThunk, profileReducer } from 'entities/Profile'
+
 import {
   TReducerList,
   DynamicModuleLoader,
@@ -16,6 +24,11 @@ interface ProfilePageProps {
 
 const ProfilePage = ({ className }: ProfilePageProps) => {
   const { t } = useTranslation()
+  const dispatch = useAppDispatch()
+
+  useEffect(() => {
+    dispatch(fetchProfileDataThunk())
+  }, [dispatch])
 
   return (
     <DynamicModuleLoader reducers={reducers}>
