@@ -1,3 +1,5 @@
+import { AxiosInstance } from 'axios'
+import { NavigateOptions, To } from 'react-router-dom'
 import {
   AnyAction,
   CombinedState,
@@ -34,4 +36,14 @@ export interface IReducerManager {
 
 export interface IReduxStoreWithManager extends EnhancedStore<IStateSchema> {
   reducerManager: IReducerManager
+}
+
+export interface IThunkExtraArg {
+  api: AxiosInstance
+  navigate: (to: To, options?: NavigateOptions) => void
+}
+
+export interface IThunkConfig<T> {
+  rejectValue: T
+  extra: IThunkExtraArg
 }

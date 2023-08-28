@@ -13,12 +13,12 @@ export interface ISidebarItem {
 
 export const sidebarList: ISidebarItem[] = [
   {
-    text: 'Main',
+    text: 'Main_page',
     path: RoutePath.main,
     Icon: MainIcon,
   },
   {
-    text: 'About',
+    text: 'About_us',
     path: RoutePath.about,
     Icon: AboutIcon,
   },

@@ -1,10 +1,12 @@
-import axios from 'axios'
 import { createAsyncThunk } from '@reduxjs/toolkit'
+
+import { IUser, userActions } from 'entities/User'
 
 // constants
 import { USER_LOCALSTORAGE_KEY } from 'shared/const/localStorage'
 
-import { IUser, userActions } from 'entities/User'
+// types
+import { IThunkConfig } from 'app/providers/StoreProvider'
 
 export interface ILoginByUsernameArgs {
   username: string
@@ -13,20 +15,24 @@ export interface ILoginByUsernameArgs {
 
 export const loginByUsernameThunk = createAsyncThunk<
   IUser,
-  ILoginByUsernameArgs
->('LOGIN/loginByUsername', async (authData, { rejectWithValue, dispatch }) => {
-  try {
-    const res = await axios.post<IUser>('http://localhost:8000/login', authData)
+  ILoginByUsernameArgs,
+  IThunkConfig<string>
+>(
+  'LOGIN/loginByUsername',
+  async (authData, { rejectWithValue, dispatch, extra }) => {
+    try {
+      const res = await extra.api.post<IUser>('/login', authData)
 
-    if (!res.data) {
-      throw new Error()
+      if (!res.data) {
+        throw new Error()
+      }
+
+      localStorage.setItem(USER_LOCALSTORAGE_KEY, JSON.stringify(res.data))
+      dispatch(userActions.setAuthData(res.data))
+
+      return res.data
+    } catch (err) {
+      return rejectWithValue('loginForm.user_not_found')
     }
-
-    localStorage.setItem(USER_LOCALSTORAGE_KEY, JSON.stringify(res.data))
-    dispatch(userActions.setAuthData(res.data))
-
-    return res.data
-  } catch (err) {
-    return rejectWithValue('loginForm.user_not_found')
   }
-})
+)

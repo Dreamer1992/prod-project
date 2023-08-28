@@ -1,4 +1,10 @@
 {
+  "Main_page": "Main page",
+
+  "About_us": "About us",
+
+  "Profile": "Profile",
+
   "Тестовый пример": "Test example",
   "Перевод": "Translate",
   "Язык": "English",
@@ -10,7 +16,6 @@
 
   "navbar.login": "Sign in",
   "navbar.logout": "Logout",
-
 
   "loginForm.auth_title": "Authorization",
   "loginForm.user_not_found": "User not found",
