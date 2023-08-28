@@ -1,4 +1,4 @@
-import { ButtonHTMLAttributes } from 'react'
+import { ButtonHTMLAttributes, memo } from 'react'
 
 // shared
 import { classNames } from 'shared/lib/classNames/classNames'
@@ -28,7 +28,7 @@ interface IProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   disabled?: boolean
 }
 
-export const Button = (props: IProps) => {
+export const Button = memo((props: IProps) => {
   const {
     className,
     children,
@@ -56,4 +56,6 @@ export const Button = (props: IProps) => {
       {children}
     </button>
   )
-}
+})
+
+Button.displayName = 'Button'

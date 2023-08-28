@@ -2,7 +2,8 @@ import { useCallback } from 'react'
 
 // hooks
 import { useTranslation } from 'react-i18next'
-import { useAppDispatch } from 'shared/lib/hooks'
+import { useAppDispatch } from 'shared/lib/hooks/hooks'
+import { useSelector } from 'react-redux'
 
 // libs
 import { classNames } from 'shared/lib/classNames/classNames'
@@ -10,7 +11,7 @@ import { classNames } from 'shared/lib/classNames/classNames'
 // ui
 import { Button, ButtonTheme } from 'shared/ui/Button/Button'
 import { Text, TextTheme } from 'shared/ui/Text/Text'
-import Input from 'shared/ui/Input/Input'
+import { Input } from 'shared/ui/Input/Input'
 
 // actions
 import { loginActions, loginReducer } from '../../model/slice/loginSlice'
@@ -24,22 +25,24 @@ import { getLoginUsername } from '../../model/selectors/getLoginUsername/getLogi
 import { getLoginPassword } from '../../model/selectors/getLoginPassword/getLoginPassword'
 import { getLoginError } from '../../model/selectors/getLoginError/getLoginError'
 
+import {
+  TReducerList,
+  DynamicModuleLoader,
+} from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader'
+
 // styles
 import cls from './LoginForm.module.scss'
-import DynamicModuleLoader, {
-  TReducerList,
-} from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader'
-import { useSelector } from 'react-redux'
 
 interface IProps {
   className?: string
+  onCloseModal: () => void
 }
 
 const initialReducers: TReducerList = {
   loginForm: loginReducer,
 }
 
-const LoginForm = ({ className }: IProps) => {
+const LoginForm = ({ className, onCloseModal }: IProps) => {
   const dispatch = useAppDispatch()
   const { t } = useTranslation('translation')
 
@@ -56,12 +59,14 @@ const LoginForm = ({ className }: IProps) => {
     dispatch(loginActions.setPassword(value))
   }, [])
 
-  const onLoginClick = useCallback(() => {
-    dispatch(loginByUsernameThunk({ username, password }))
+  const onLoginClick = useCallback(async () => {
+    const res = await dispatch(loginByUsernameThunk({ username, password }))
+
+    if (res.meta.requestStatus === 'fulfilled') onCloseModal()
   }, [username, password])
 
   return (
-    <DynamicModuleLoader reducers={initialReducers} removeAfterUnmount>
+    <DynamicModuleLoader reducers={initialReducers}>
       <div className={classNames(cls.loginForm, {}, [className])}>
         <Text title={t('loginForm.auth_title')} />
 

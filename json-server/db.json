@@ -1,6 +1,15 @@
 {
   "users": [{ "id": 1, "username": "123", "password": "123" }],
-  "posts": [{ "id": 1, "title": "json-server", "author": "typicode" }],
+  "posts": [{ "id": 1, "title": "json-server", "author": "Davlet" }],
   "comments": [{ "id": 1, "body": "some comment", "postId": 1 }],
-  "profile": { "name": "typicode" }
+  "profile": {
+    "firstName": "Davlet",
+    "lastName": "Ganiev",
+    "age": 31,
+    "currency": "RUB",
+    "country": "Russia",
+    "city": "Stavropol",
+    "username": "Dreamer",
+    "avatar": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQJi-GSmpWt98IyiHxieXLyA-aIT8VL45JSZw&usqp=CAU"
+  }
 }

@@ -1,3 +1,4 @@
+import { memo } from 'react'
 import { Link, LinkProps } from 'react-router-dom'
 
 // shared
@@ -17,7 +18,7 @@ interface IProps extends LinkProps {
   theme?: AppLinkTheme
 }
 
-export const AppLink = (props: IProps) => {
+export const AppLink = memo((props: IProps) => {
   const {
     to,
     className,
@@ -35,4 +36,6 @@ export const AppLink = (props: IProps) => {
       {children}
     </Link>
   )
-}
+})
+
+AppLink.displayName = 'AppLink'

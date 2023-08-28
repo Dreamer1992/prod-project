@@ -17,7 +17,7 @@ interface IProps extends HTMLInputProps {
   onChange?: (value: string) => void
 }
 
-const Input = (props: IProps) => {
+export const Input = memo((props: IProps) => {
   const {
     className,
     value,
@@ -45,8 +45,6 @@ const Input = (props: IProps) => {
       </div>
     </div>
   )
-}
+})
 
-const InputMemoized = memo(Input)
-
-export default InputMemoized
+Input.displayName = 'Input'

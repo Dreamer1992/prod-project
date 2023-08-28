@@ -1,3 +1,4 @@
+import { memo } from 'react'
 import { Theme, useTheme } from 'app/providers/ThemeProvider'
 
 // shared
@@ -12,7 +13,7 @@ interface IProps {
   className?: string
 }
 
-export const ThemeSwitcher = ({ className }: IProps) => {
+export const ThemeSwitcher = memo(({ className }: IProps) => {
   const { theme, toggleTheme } = useTheme()
 
   return (
@@ -24,4 +25,6 @@ export const ThemeSwitcher = ({ className }: IProps) => {
       {theme === Theme.DARK ? <DarkIcon /> : <LightIcon />}
     </Button>
   )
-}
+})
+
+ThemeSwitcher.displayName = 'ThemeSwitcher'

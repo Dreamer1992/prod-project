@@ -18,10 +18,10 @@ interface IProps {
   removeAfterUnmount?: boolean
 }
 
-const DynamicModuleLoader = ({
+export const DynamicModuleLoader = ({
   children,
   reducers,
-  removeAfterUnmount,
+  removeAfterUnmount = true,
 }: IProps) => {
   const store = useStore() as IReduxStoreWithManager
 
@@ -41,5 +41,3 @@ const DynamicModuleLoader = ({
 
   return <>{children}</>
 }
-
-export default DynamicModuleLoader

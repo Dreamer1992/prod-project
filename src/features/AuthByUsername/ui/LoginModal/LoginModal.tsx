@@ -5,8 +5,8 @@ import { classNames } from 'shared/lib/classNames/classNames'
 
 // ui
 import { Modal } from 'shared/ui/Modal/Modal'
-import { LoginFormAsync } from '../LoginForm/LoginForm.async'
 import { Loader } from 'shared/ui/Loader/Loader'
+import { LoginFormAsync } from '../LoginForm/LoginForm.async'
 
 interface IProps {
   className?: string
@@ -21,7 +21,7 @@ export const LoginModal = ({ className, isOpen, onClose }: IProps) => (
     onClose={onClose}
   >
     <Suspense fallback={<Loader />}>
-      <LoginFormAsync />
+      <LoginFormAsync onCloseModal={onClose} />
     </Suspense>
   </Modal>
 )

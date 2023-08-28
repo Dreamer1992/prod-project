@@ -1,3 +1,5 @@
+import { memo } from 'react'
+
 // libs
 import { classNames } from 'shared/lib/classNames/classNames'
 
@@ -16,7 +18,7 @@ interface TextProps {
   theme?: TextTheme
 }
 
-export const Text = (props: TextProps) => {
+const TextMemoized = (props: TextProps) => {
   const { className, text, title, theme = TextTheme.PRIMARY } = props
 
   return (
@@ -26,3 +28,5 @@ export const Text = (props: TextProps) => {
     </div>
   )
 }
+
+export const Text = memo(TextMemoized)
