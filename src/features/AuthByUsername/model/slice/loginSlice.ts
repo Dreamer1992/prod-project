@@ -25,18 +25,19 @@ const loginSlice = createSlice({
       state.password = action.payload
     },
   },
-  extraReducers: {
-    [loginByUsernameThunk.pending.toString()]: (state) => {
-      state.error = undefined
-      state.isLoading = true
-    },
-    [loginByUsernameThunk.fulfilled.toString()]: (state) => {
-      state.isLoading = false
-    },
-    [loginByUsernameThunk.rejected.toString()]: (state, action) => {
-      state.isLoading = false
-      state.error = action.payload
-    },
+  extraReducers: (builder) => {
+    builder
+      .addCase(loginByUsernameThunk.pending, (state) => {
+        state.error = undefined
+        state.isLoading = true
+      })
+      .addCase(loginByUsernameThunk.fulfilled, (state) => {
+        state.isLoading = false
+      })
+      .addCase(loginByUsernameThunk.rejected, (state, action) => {
+        state.isLoading = false
+        state.error = action.payload
+      })
   },
 })
 

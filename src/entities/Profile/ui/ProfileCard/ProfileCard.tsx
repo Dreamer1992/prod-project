@@ -1,6 +1,5 @@
 // hooks
 import { useTranslation } from 'react-i18next'
-import { useSelector } from 'react-redux'
 
 // libs
 import { classNames } from 'shared/lib/classNames/classNames'
@@ -9,25 +8,56 @@ import { classNames } from 'shared/lib/classNames/classNames'
 import cls from './ProfileCard.module.scss'
 
 // ui
-import { Text } from 'shared/ui/Text/Text'
+import { Text, TextAlign, TextTheme } from 'shared/ui/Text/Text'
 import { Button, ButtonTheme } from 'shared/ui/Button/Button'
-
-// selectors
-import { getProfileData } from '../../model/selectors/getProfileData/getProfileData'
-import { getProfileError } from '../../model/selectors/getProfileError/getProfileError'
-import { getProfileIsLoading } from '../../model/selectors/getProfileIsLoading/getProfileIsLoading'
 import { Input } from 'shared/ui/Input/Input'
+import { Loader } from 'shared/ui/Loader/Loader'
+
+// types
+import { IProfile } from '../../model/types/profile'
 
 interface IProps {
+  data?: IProfile
+  isLoading?: boolean
+  error?: string
   className?: string
 }
 
-const ProfileCard = ({ className }: IProps) => {
+const ProfileCard = (props: IProps) => {
+  const { className, data, isLoading, error } = props
+
   const { t } = useTranslation('profile')
 
-  const profile = useSelector(getProfileData)
-  const error = useSelector(getProfileError)
-  const isLoading = useSelector(getProfileIsLoading)
+  if (isLoading) {
+    return (
+      <div
+        className={classNames(cls.profileCard, { [cls.loading]: isLoading }, [
+          className,
+        ])}
+      >
+        <Loader />
+      </div>
+    )
+  }
+
+  if (error) {
+    return (
+      <div className={classNames(cls.profileCard, {}, [className, cls.error])}>
+        <Text
+          theme={TextTheme.ERROR}
+          title={t(
+            'Profile_card.error_loading_profile',
+            'Произошла ошибка при загрузке профиля'
+          )}
+          text={t(
+            'Profile_card.try_refreshing_page',
+            'Попробуйте обновить страницу'
+          )}
+          align={TextAlign.CENTER}
+        />
+      </div>
+    )
+  }
 
   return (
     <div className={classNames(cls.profileCard, {}, [className])}>
@@ -38,12 +68,12 @@ const ProfileCard = ({ className }: IProps) => {
 
       <div className={cls.editForm}>
         <Input
-          value={profile?.firstName}
+          value={data?.firstName}
           placeholder={t('Profile_card.form_firstName', 'Ваше имя')}
           className={cls.input}
         />
         <Input
-          value={profile?.lastName}
+          value={data?.lastName}
           placeholder={t('Profile_card.form_lastName', 'Ваша фамилия')}
           className={cls.input}
         />

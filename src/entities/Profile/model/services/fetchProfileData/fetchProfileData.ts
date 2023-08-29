@@ -11,7 +11,6 @@ export const fetchProfileDataThunk = createAsyncThunk<
 >(`${PROFILE}/fetchProfileData`, async (_, { rejectWithValue, extra }) => {
   try {
     const res = await extra.api.get<IProfile>('/profile')
-
     return res.data
   } catch (err) {
     return rejectWithValue('error')

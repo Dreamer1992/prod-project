@@ -22,4 +22,15 @@
             margin-left: auto;
         }
     }
+
+    .loading,
+    .error {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    &.error {
+        max-width: 550px;
+    }
 }
