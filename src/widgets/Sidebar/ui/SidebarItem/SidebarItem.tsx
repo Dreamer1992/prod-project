@@ -18,7 +18,7 @@ interface IProps {
 }
 
 const SidebarItem = ({ item, isCollapsed }: IProps) => {
-  const { t } = useTranslation()
+  const { t } = useTranslation('sidebar')
 
   return (
     <AppLink

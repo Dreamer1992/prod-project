@@ -19,7 +19,7 @@ export interface IStateSchema {
 
   // async reducers
   loginForm?: ILoginSchema
-  profile: IProfileSchema
+  profile?: IProfileSchema
 }
 
 export type TStateSchemaKey = keyof IStateSchema
@@ -40,7 +40,7 @@ export interface IReduxStoreWithManager extends EnhancedStore<IStateSchema> {
 
 export interface IThunkExtraArg {
   api: AxiosInstance
-  navigate: (to: To, options?: NavigateOptions) => void
+  navigate?: (to: To, options?: NavigateOptions) => void
 }
 
 export interface IThunkConfig<T> {

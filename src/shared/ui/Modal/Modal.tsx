@@ -4,7 +4,7 @@ import { ReactNode, useCallback, useEffect, useRef, useState } from 'react'
 import { useTheme } from 'app/providers/ThemeProvider'
 
 // libs
-import { classNames } from 'shared/lib/classNames/classNames'
+import { TMods, classNames } from 'shared/lib/classNames/classNames'
 
 // ui
 import { Portal } from 'shared/ui/Portal/Portal'
@@ -64,7 +64,7 @@ export const Modal = (props: IProps) => {
     }
   }, [isOpen, onKeyDown])
 
-  const mods: Record<string, boolean> = {
+  const mods: TMods = {
     [cls.opened]: isOpen,
     [cls.isClosing]: isClosing,
   }

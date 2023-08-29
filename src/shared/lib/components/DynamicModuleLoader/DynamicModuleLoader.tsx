@@ -10,8 +10,6 @@ export type TReducerList = {
   [name in TStateSchemaKey]?: Reducer
 }
 
-type ReducerListEntry = [TStateSchemaKey, Reducer]
-
 interface IProps {
   children: React.ReactNode
   reducers: TReducerList
@@ -26,14 +24,14 @@ export const DynamicModuleLoader = ({
   const store = useStore() as IReduxStoreWithManager
 
   useEffect(() => {
-    Object.entries(reducers).forEach(([name, reducer]: ReducerListEntry) => {
-      store.reducerManager.add(name, reducer)
+    Object.entries(reducers).forEach(([name, reducer]) => {
+      store.reducerManager.add(name as TStateSchemaKey, reducer)
     })
 
     return () => {
       if (removeAfterUnmount) {
-        Object.entries(reducers).forEach(([name]: ReducerListEntry) => {
-          store.reducerManager.remove(name)
+        Object.entries(reducers).forEach(([name]) => {
+          store.reducerManager.remove(name as TStateSchemaKey)
         })
       }
     }
