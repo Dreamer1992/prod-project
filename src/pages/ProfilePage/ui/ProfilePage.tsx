@@ -8,6 +8,7 @@ import { useTranslation } from 'react-i18next'
 import { classNames } from 'shared/lib/classNames/classNames'
 
 import { fetchProfileDataThunk, profileReducer } from 'entities/Profile'
+import ProfileCard from 'entities/Profile/ui/ProfileCard/ProfileCard'
 
 import {
   TReducerList,
@@ -32,7 +33,9 @@ const ProfilePage = ({ className }: ProfilePageProps) => {
 
   return (
     <DynamicModuleLoader reducers={reducers}>
-      <div className={classNames('', {}, [className])}>{t('PROFILE PAGE')}</div>
+      <div className={classNames('', {}, [className])}>
+        <ProfileCard />
+      </div>
     </DynamicModuleLoader>
   )
 }

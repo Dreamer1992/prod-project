@@ -19,7 +19,7 @@ export interface IStateSchema {
 
   // async reducers
   loginForm?: ILoginSchema
-  profile: IProfileSchema
+  profile?: IProfileSchema
 }
 
 export type TStateSchemaKey = keyof IStateSchema

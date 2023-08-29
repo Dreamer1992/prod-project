@@ -1,3 +1,3 @@
-import { StateSchema } from 'app/providers/StoreProvider';
+import { IStateSchema } from 'app/providers/StoreProvider'
 
-export const getProfileError = (state: StateSchema) => state.profile?.error;
+export const getProfileError = (state: IStateSchema) => state.profile?.error
