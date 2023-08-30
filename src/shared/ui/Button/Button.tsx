@@ -6,23 +6,34 @@ import { TMods, classNames } from 'shared/lib/classNames/classNames'
 // styles
 import cls from './Button.module.scss'
 
-export enum ButtonTheme {
-  CLEAR = 'clear',
-  CLEAR_INVERTED = 'clearInverted',
-  OUTLINE = 'outline',
-  BACKGROUND = 'background',
-  BACKGROUND_INVERTED = 'backgroundInverted',
+export enum ButtonVariant {
+  CONTAINED = 'contained',
+  OUTLINED = 'outlined',
+  TEXT = 'text',
+  // CLEAR = 'clear',
+  // CLEAR_INVERTED = 'clearInverted',
+  // BACKGROUND = 'background',
+  // BACKGROUND_INVERTED = 'backgroundInverted',
+}
+
+export enum ButtonColor {
+  PRIMARY = 'primary', // add style
+  SECONDARY = 'secondary', // add style
+  SUCCESS = 'success', // add style
+  WARNING = 'warning', // add style
+  ERROR = 'error',
 }
 
 export enum ButtonSize {
-  SM = 'size_small',
-  MD = 'size_medium',
-  LG = 'size_large',
+  SMALL = 'size_small',
+  MEDIUM = 'size_medium',
+  LARGE = 'size_large',
 }
 
 interface IProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   className?: string
-  theme?: ButtonTheme
+  variant?: ButtonVariant
+  color?: ButtonColor
   isSquare?: boolean
   size?: ButtonSize
   disabled?: boolean
@@ -32,24 +43,28 @@ export const Button = memo((props: IProps) => {
   const {
     className,
     children,
-    theme = ButtonTheme.OUTLINE,
     isSquare,
     disabled,
-    size = ButtonSize.MD,
+    variant = ButtonVariant.CONTAINED,
+    color = ButtonColor.PRIMARY,
+    size = ButtonSize.MEDIUM,
     ...otherProps
   } = props
 
   const mods: TMods = {
-    [cls[theme]]: true,
     [cls.square]: isSquare,
-    [cls[size]]: true,
     [cls.disabled]: disabled,
   }
 
   return (
     <button
       type="button"
-      className={classNames(cls.Button, mods, [className])}
+      className={classNames(cls.Button, mods, [
+        cls[color],
+        cls[variant],
+        cls[size],
+        className,
+      ])}
       disabled={disabled}
       {...otherProps}
     >

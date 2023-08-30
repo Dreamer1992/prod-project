@@ -7,7 +7,7 @@ import { sidebarList } from '../../model/items'
 import SidebarItem from '../SidebarItem/SidebarItem'
 
 // shared
-import { Button, ButtonSize, ButtonTheme } from 'shared/ui/Button/Button'
+import { Button, ButtonSize, ButtonVariant } from 'shared/ui/Button/Button'
 import { classNames } from 'shared/lib/classNames/classNames'
 
 // styles
@@ -41,7 +41,7 @@ export const Sidebar = ({ className }: IProps) => {
         data-testid="sidebar-toggle"
         onClick={onToggle}
         className={cls.collapseBtn}
-        theme={ButtonTheme.BACKGROUND}
+        variant={ButtonVariant.BACKGROUND}
         size={ButtonSize.LG}
         isSquare
       >

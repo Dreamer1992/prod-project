@@ -9,7 +9,7 @@ import { useSelector } from 'react-redux'
 import { classNames } from 'shared/lib/classNames/classNames'
 
 // ui
-import { Button, ButtonTheme } from 'shared/ui/Button/Button'
+import { Button, ButtonVariant } from 'shared/ui/Button/Button'
 import { Text, TextTheme } from 'shared/ui/Text/Text'
 import { Input } from 'shared/ui/Input/Input'
 
@@ -94,7 +94,7 @@ const LoginForm = ({ className, onCloseModal }: IProps) => {
         />
 
         <Button
-          theme={ButtonTheme.OUTLINE}
+          variant={ButtonVariant.OUTLINE}
           className={cls.loginBtn}
           disabled={isLoading}
           onClick={onLoginClick}

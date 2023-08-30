@@ -2,7 +2,7 @@ import { memo } from 'react'
 import { Theme, useTheme } from 'app/providers/ThemeProvider'
 
 // shared
-import { Button, ButtonTheme } from 'shared/ui/Button/Button'
+import { Button, ButtonVariant } from 'shared/ui/Button/Button'
 import { classNames } from 'shared/lib/classNames/classNames'
 
 // icons
@@ -18,7 +18,7 @@ export const ThemeSwitcher = memo(({ className }: IProps) => {
 
   return (
     <Button
-      theme={ButtonTheme.CLEAR}
+      variant={ButtonVariant.CLEAR}
       className={classNames('', {}, [className])}
       onClick={toggleTheme}
     >

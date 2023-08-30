@@ -1,26 +1,13 @@
 .profileCard {
     display: flex;
     flex-direction: column;
-    padding: 20px;
+    padding: 6px 20px 20px;
     width: 100%;
     max-width: 400px;
     gap: 4px;
 
-    .cardHeader {
-        margin-bottom: 6px;
-    }
-
     .editForm .input {
         margin-bottom: 12px;
-    }
-
-    .wrapperBtn {
-        display: flex;
-
-        .editBtn {
-            margin-top: 6px;
-            margin-left: auto;
-        }
     }
 
     .loading,

@@ -1,6 +1,7 @@
 {
   "Profile_card.profile_title": "Profile",
   "Profile_card.btn_edit": "Edit",
+  "Profile_card.btn_cancel": "Cancel",
   "Profile_card.form_firstName": "Your name",
   "Profile_card.form_lastName": "Your last name",
   "Profile_card.error_loading_profile": "An error occurred while loading the profile",

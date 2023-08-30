@@ -1,6 +1,7 @@
 {
   "Profile_card.profile_title": "Профиль",
   "Profile_card.btn_edit": "Редактировать",
+  "Profile_card.btn_cancel": "Отменить",
   "Profile_card.form_firstName": "Ваше имя",
   "Profile_card.form_lastName": "Ваша фамилия",
   "Profile_card.error_loading_profile": "Произошла ошибка при загрузке профиля",
